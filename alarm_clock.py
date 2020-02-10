@@ -1,19 +1,13 @@
-class alarmClock:
-    import datetime
-    import time
-    import winsound
+import datetime
+import time
+import winsound
 
-    def display_Time():
+
+def display_Time():
         localtime = time.asctime( time.localtime(time.time()) );
         print("Local current time :", localtime)
 
-    def set_Alarm():
-
-        """
-           When the alarm goes off, a a beep sound is played
-        """
-
-
+def set_Alarm():
         def check_alarm_input(alarm_time):
                 """Checks to see if the user has entered in a valid alarm time"""
                 if len(alarm_time) == 1: # [Hour] Format
@@ -31,7 +25,7 @@ class alarmClock:
                 return False
 
         # Get user input for the alarm time
-        print("Set a time for the alarm Example 04:20 or 20:30:00)")
+        print("Set a time for the alarm (Ex. 06:30 or 18:30:00)")
         while True:
                 alarm_input = input(">> ")
                 try:
@@ -69,11 +63,18 @@ class alarmClock:
 
         # Play the beep sound
         frequency = 2500  # Set Frequency To 2500 Hertz
-        duration = 3000  # Set Duration To 1000 ms == 1 second
+        duration = 3000  # Set Duration To 1000 ms == 1 second (The time is set to a smaller time for testing purposes)
         winsound.Beep(frequency, duration)
 
 
 
-alarm = alarmClock()
-alarm.display_Time
+print("Welcome to the online Alarm!!! ")
+opt = eval(input("Please select an option from the Menu (enter 1 or 2) \n 1: Display Time \n 2: Set Alarm \n"))
+print("=========================================================================")
 
+if (opt == 1):
+        display_Time()
+elif (opt == 2):
+        set_Alarm()
+else:
+        print("Please you have entered a wrong input.Please start gain and select 1 or 2")
